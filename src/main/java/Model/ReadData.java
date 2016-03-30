@@ -39,7 +39,7 @@ public class ReadData {
     public List<CompleteBlog> getData()throws MalformedURLException, GeneralSecurityException, IOException, ServiceException{
         List<CompleteBlog> completeBlogList=new ArrayList<>();
         String status="";
-        java.io.File p12 = new java.io.File("weBlog-2d92ff2bcb8b.p12");
+        java.io.File p12 = new java.io.File("src/main/resources/weBlog-2d92ff2bcb8b.p12");
         HttpTransport httpTransport = new NetHttpTransport();
         JacksonFactory jsonFactory = new JacksonFactory();
         String [] SCOPESArray= {"https://spreadsheets.google.com/feeds", "https://docs.google.com/feeds"};
