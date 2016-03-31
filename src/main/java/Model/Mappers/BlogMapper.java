@@ -16,6 +16,6 @@ ID binary(36) primary key,TITLE text NOT NULL, DESCRIPTION text DEFAULT NULL, GE
 public class BlogMapper implements ResultSetMapper<Blog> {
     @Override
     public Blog map(int i, ResultSet resultSet, StatementContext statementContext) throws SQLException {
-        return new Blog(resultSet.getString("ID"),resultSet.getString("TITLE"),resultSet.getString("DESCRIPTION"),resultSet.getString("GENRE"),resultSet.getTimestamp("PUBLISHED_ON"));
+        return new Blog(resultSet.getString("ID"),resultSet.getString("TITLE"),resultSet.getString("GENRE"),resultSet.getString("DESCRIPTION"),resultSet.getTimestamp("PUBLISHED_ON"));
     }
 }

@@ -25,6 +25,7 @@ public class IndexResources {
     MysqlConnection mysqlConnection;
 
     @GET
+    @Path("/")
     public List<CompleteBlog> index( @QueryParam(value = "category") final String category,@QueryParam(value = "title") final String title, @QueryParam(value = "date")final String  date) throws SQLException {
 
         List<CompleteBlog> completeBlogList=new ArrayList<>();

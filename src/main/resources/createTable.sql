@@ -7,7 +7,7 @@ drop table if exists ExternalURL;
 drop table if exists Blog;
 
 
-create table Blog(ID binary(36) primary key,TITLE text NOT NULL, DESCRIPTION text DEFAULT NULL, GENRE text NOT NULL,PUBLISHED_ON date NOT NULL);
+create table Blog(ID binary(36) primary key,TITLE text NOT NULL,GENRE text NOT NULL, DESCRIPTION text DEFAULT NULL,PUBLISHED_ON date NOT NULL);
 
 create table ExternalURL(EUID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
  BLOG_ID binary(36)not null ,URL varchar(100) NOT NULL);

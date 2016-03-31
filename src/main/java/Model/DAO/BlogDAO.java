@@ -16,9 +16,9 @@ import java.util.List;
 @RegisterMapper(BlogMapper.class)
 public interface BlogDAO {
     @SqlUpdate("insert into Blog (ID ,TITLE , GENRE, DESCRIPTION, PUBLISHED_ON) values (:id, :title, :genre, :desc, :pub)")
-    void insert(@Bind("id") String id, @Bind("title") String title,@Bind("desc")String desc,@Bind("genre")String genre,@Bind("pub")Timestamp timestamp);
+    void insert(@Bind("id") String id, @Bind("title") String title,@Bind("genre")String genre,@Bind("desc")String desc,@Bind("pub")Timestamp timestamp);
 
-    @SqlQuery("select * from Blog")
+    @SqlQuery("select ID ,TITLE , GENRE, DESCRIPTION, PUBLISHED_ON from Blog")
     List<Blog> get();
 
     @SqlQuery("select DISTINCT TITLE from Blog ")

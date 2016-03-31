@@ -27,13 +27,14 @@ public class CompleteBlog {
     private String title;
 
 
+    @JsonProperty("GENRE")
+    private String description;
+
     @NotBlank
     @JsonProperty("DESCRIPTION")
     private String genre;
 
 
-    @JsonProperty("GENRE")
-    private String description;
 
 //    private String[] tags;
 
@@ -48,17 +49,17 @@ public class CompleteBlog {
 
 
 
-    @Override
-    public String toString(){
-        JSONObject blogString = new JSONObject();
-        blogString.put("ID", this.getId());
-        blogString.put("TITLE", this.getTitle());
-        blogString.put("DESCRIPTION", this.getDescription());
-        blogString.put("GENRE", this.getGenre());
-        blogString.put("PUBLISHED_ON", this.getPublishedOn());
-        blogString.put("URLS", urls);
-
-        return blogString.toJSONString();
-    }
+//    @Override
+//    public String toString(){
+//        JSONObject blogString = new JSONObject();
+//        blogString.put("ID", this.id);
+//        blogString.put("TITLE", this.title);
+//        blogString.put("GENRE", this.genre);
+//        blogString.put("DESCRIPTION", this.description);
+//        blogString.put("PUBLISHED_ON", this.publishedOn);
+//        blogString.put("URLS", urls);
+//
+//        return blogString.toJSONString();
+//    }
 
 }
