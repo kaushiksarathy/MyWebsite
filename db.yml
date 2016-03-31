@@ -1,9 +1,3 @@
-host : localhost
-port : 3306
-db : mysite
-user : root
-password :
-
 database:
   # the name of your JDBC driver
   driverClass: com.mysql.jdbc.Driver

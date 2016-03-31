@@ -10,6 +10,8 @@ import lombok.Getter;
 @Getter
 public class ExternalUrl {
 
+   private int EUID;
    private String blog_id;
    private String url;
+
 }

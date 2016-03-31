@@ -26,6 +26,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 
@@ -39,6 +40,7 @@ public class ReadData {
     public List<CompleteBlog> getData()throws MalformedURLException, GeneralSecurityException, IOException, ServiceException{
         List<CompleteBlog> completeBlogList=new ArrayList<>();
         String status="";
+        System.out.println("key");
         java.io.File p12 = new java.io.File("src/main/resources/weBlog-2d92ff2bcb8b.p12");
         HttpTransport httpTransport = new NetHttpTransport();
         JacksonFactory jsonFactory = new JacksonFactory();
@@ -87,6 +89,9 @@ public class ReadData {
                         List<String> urls=new ArrayList<>();
 
                         ListEntry listEntry = (ListEntry) listEntryIterator.next();
+                        SimpleDateFormat fromUser = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                        SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+
                         for (String tag : listEntry.getCustomElements().getTags()) {
                             System.out.println("     " + tag + ": "
                                     + listEntry.getCustomElements().getValue(tag));
@@ -98,15 +103,16 @@ public class ReadData {
                             else if(tag.equalsIgnoreCase("genre"))
                                 genre=listEntry.getCustomElements().getValue(tag);
                             else if(tag.equalsIgnoreCase("publishedon"))
-                                publishedOn=Timestamp.valueOf(listEntry.getCustomElements().getValue(tag));
+                                publishedOn=new Timestamp(Long.valueOf(listEntry.getCustomElements().getValue(tag)));
                             else if(tag.equalsIgnoreCase("tag"))
                                 tags=listEntry.getCustomElements().getValue(tag).split(",");
                             else if(tag.equalsIgnoreCase("urls"))
                                 urls=Arrays.asList(listEntry.getCustomElements().getValue(tag).split(","));
 
 
-
+                            System.out.println("reading data and filling");
                         }
+                        System.out.println(title+description+genre+publishedOn);
                         completeBlogList.add(new CompleteBlog(UUID.randomUUID().toString().replace("-",""),title, genre,description,publishedOn,urls));
 
                     }
@@ -117,6 +123,8 @@ public class ReadData {
         }catch(Exception e){
             e.printStackTrace();
         }
+
+        System.out.println("size of list "+completeBlogList.size());
 
         return completeBlogList;
 

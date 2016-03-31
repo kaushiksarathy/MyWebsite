@@ -16,6 +16,6 @@ BLOG_ID binary(36) primary key,URL text NOT NULL,foreign key (BLOG_ID) reference
 public class ExternalUrlMapper implements ResultSetMapper<ExternalUrl> {
     @Override
     public ExternalUrl map(int i, ResultSet resultSet, StatementContext statementContext) throws SQLException {
-        return new ExternalUrl(resultSet.getString("BLOG_ID"),resultSet.getString("URL"));
+        return new ExternalUrl(resultSet.getInt("EUID"),resultSet.getString("BLOG_ID"),resultSet.getString("URL"));
     }
 }

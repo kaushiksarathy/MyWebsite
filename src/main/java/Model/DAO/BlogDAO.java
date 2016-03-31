@@ -21,6 +21,15 @@ public interface BlogDAO {
     @SqlQuery("select * from Blog")
     List<Blog> get();
 
+    @SqlQuery("select DISTINCT TITLE from Blog ")
+    List<String> getAllTitle();
+
+    @SqlQuery("select DISTINCT GENRE from Blog ")
+    List<String> getAllGenre();
+
+    @SqlQuery("select DISTINCT PUBLISHED_ON from Blog ")
+    List<Timestamp> getAllDate();
+
     @SqlQuery("select * from Blog where ID = :id")
     Blog findBlogById(@Bind("id") String id);
 

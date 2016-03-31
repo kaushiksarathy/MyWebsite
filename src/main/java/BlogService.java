@@ -26,10 +26,10 @@ public class BlogService extends Application<BlogConfiguration> {
     public void run(BlogConfiguration blogConfiguration, Environment environment) throws Exception {
 
         final DBIFactory factory = new DBIFactory();
-        final DBI jdbi = factory.build(environment, blogConfiguration.getDataSourceFactory(), "postgresql");
-        new MysqlConnection(jdbi);
+        final DBI jdbi = factory.build(environment, blogConfiguration.getDataSourceFactory(), "mysql");
+        MysqlConnection mysqlConnection=new MysqlConnection(jdbi);
 
-        environment.jersey().register(new IndexResources(new ArrayList<Blog>()));
-        environment.jersey().register(new AddBlog(new ArrayList<Blog>()));
+        environment.jersey().register(new IndexResources(mysqlConnection));
+        environment.jersey().register(new AddBlog(mysqlConnection));
     }
 }
